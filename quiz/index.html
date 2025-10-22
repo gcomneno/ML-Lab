@@ -1,0 +1,1185 @@
+
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Laboratorio pratico per principianti al Machine Learning (Python + scikit-learn)">
+      
+      
+      
+        <link rel="canonical" href="https://gcomneno.github.io/ML-Lab/quiz/">
+      
+      
+        <link rel="prev" href="../script/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Quiz - ML-Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ml-lab-quiz-qa-versione-chiara" class="md-skip">
+          Vai al contenuto
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Intestazione">
+    <a href=".." title="ML-Lab" class="md-header__button md-logo" aria-label="ML-Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ML-Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Cancella" aria-label="Cancella" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inizializza la ricerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gcomneno/ML-Lab" title="Apri repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gcomneno/ML-Lab
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigazione" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ML-Lab" class="md-nav__button md-logo" aria-label="ML-Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ML-Lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gcomneno/ML-Lab" title="Apri repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gcomneno/ML-Lab
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons-learned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lessons Learned
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Script
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Quiz
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quiz
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-che-cose-in-una-frase-il-machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) Che cos’è, in una frase, il Machine Learning?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-perche-il-test-e-sacro" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Perché il “test è sacro”?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-overfitting-vs-underfitting-differenza-pratica-e-rimedi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) Overfitting vs Underfitting: differenza pratica e rimedi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-decision-tree-perche-e-spiegabile-e-come-ne-controlli-la-complessita" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) Decision Tree: perché è spiegabile e come ne controlli la complessità?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-perche-una-random-forest-riduce-la-varianza-dellalbero-singolo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5) Perché una Random Forest riduce la varianza dell’albero singolo?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cose-un-iperparametro-esempi" class="md-nav__link">
+    <span class="md-ellipsis">
+      6) Cos’è un iperparametro? Esempi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-k-fold-cross-validation-cose-e-perche-sul-solo-train" class="md-nav__link">
+    <span class="md-ellipsis">
+      7) k-fold Cross-Validation: cos’è e perché sul solo train?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-regola-1-se-quando-e-perche" class="md-nav__link">
+    <span class="md-ellipsis">
+      8) Regola 1-SE: quando e perché?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-perche-laccuracy-puo-mentire-con-classi-sbilanciate" class="md-nav__link">
+    <span class="md-ellipsis">
+      9) Perché l’accuracy può mentire con classi sbilanciate?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-precision-recall-f1-definizioni-pratiche" class="md-nav__link">
+    <span class="md-ellipsis">
+      10) Precision, Recall, F1: definizioni pratiche
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-roc-auc-cosa-misura-e-perche-non-dipende-da-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      11) ROC-AUC: cosa misura e perché non dipende da 0.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-come-si-sceglie-la-soglia-tre-strade" class="md-nav__link">
+    <span class="md-ellipsis">
+      12) Come si sceglie la soglia? Tre strade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-cosa-sono-youden-e-oof" class="md-nav__link">
+    <span class="md-ellipsis">
+      13) Cosa sono Youden e OOF?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-quando-serve-lo-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      14) Quando serve lo scaling?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-logistic-regression-procontro-e-iper-chiave" class="md-nav__link">
+    <span class="md-ellipsis">
+      15) Logistic Regression: pro/contro e iper chiave
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-random-forest-procontro-e-pomelli" class="md-nav__link">
+    <span class="md-ellipsis">
+      16) Random Forest: pro/contro e pomelli
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-perche-calibrare-le-probabilita-di-una-rf-come" class="md-nav__link">
+    <span class="md-ellipsis">
+      17) Perché calibrare le probabilità di una RF? Come?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-importanza-delle-feature-impurity-vs-permutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      18) Importanza delle feature: “impurity” vs “permutation”
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-effetto-delle-feature-molto-correlate" class="md-nav__link">
+    <span class="md-ellipsis">
+      19) Effetto delle feature molto correlate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-cose-lablation-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      20) Cos’è l’ablation test?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-cose-il-data-leakage-esempio-e-prevenzione" class="md-nav__link">
+    <span class="md-ellipsis">
+      21) Cos’è il data leakage? Esempio e prevenzione
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-perche-pipeline-gridsearchcv-previene-il-leakage" class="md-nav__link">
+    <span class="md-ellipsis">
+      22) Perché Pipeline + GridSearchCV previene il leakage?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-predizioni-oof-perche-usarle-per-la-soglia" class="md-nav__link">
+    <span class="md-ellipsis">
+      23) Predizioni OOF: perché usarle per la soglia?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-refit-su-f1-cosa-vuol-dire-e-come-valuti-il-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      24) “Refit su F1”: cosa vuol dire e come valuti il test?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-confusion-matrix-lettura-e-collegamento-ai-costi" class="md-nav__link">
+    <span class="md-ellipsis">
+      25) Confusion matrix: lettura e collegamento ai costi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-logit-o-random-forest-quando-scegliere-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      26) Logit o Random Forest? Quando scegliere cosa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-class_weightbalanced-cosa-fa-e-quando-usarlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      27) class_weight='balanced': cosa fa e quando usarlo?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-come-controlli-la-stabilita-dei-risultati" class="md-nav__link">
+    <span class="md-ellipsis">
+      28) Come controlli la stabilità dei risultati?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-perche-05-non-e-una-legge-per-la-soglia" class="md-nav__link">
+    <span class="md-ellipsis">
+      29) Perché 0.5 non è una legge per la soglia?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#30-workflow-che-non-ti-frega-passo-passo" class="md-nav__link">
+    <span class="md-ellipsis">
+      30) Workflow “che non ti frega” (passo-passo)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-come-leggere-un-run-summary-stampato-dagli-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bonus) Come leggere un RUN SUMMARY stampato dagli script
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus) Come leggere un RUN SUMMARY stampato dagli script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mini-glossario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mini-glossario
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-che-cose-in-una-frase-il-machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) Che cos’è, in una frase, il Machine Learning?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-perche-il-test-e-sacro" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Perché il “test è sacro”?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-overfitting-vs-underfitting-differenza-pratica-e-rimedi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) Overfitting vs Underfitting: differenza pratica e rimedi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-decision-tree-perche-e-spiegabile-e-come-ne-controlli-la-complessita" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) Decision Tree: perché è spiegabile e come ne controlli la complessità?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-perche-una-random-forest-riduce-la-varianza-dellalbero-singolo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5) Perché una Random Forest riduce la varianza dell’albero singolo?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cose-un-iperparametro-esempi" class="md-nav__link">
+    <span class="md-ellipsis">
+      6) Cos’è un iperparametro? Esempi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-k-fold-cross-validation-cose-e-perche-sul-solo-train" class="md-nav__link">
+    <span class="md-ellipsis">
+      7) k-fold Cross-Validation: cos’è e perché sul solo train?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-regola-1-se-quando-e-perche" class="md-nav__link">
+    <span class="md-ellipsis">
+      8) Regola 1-SE: quando e perché?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-perche-laccuracy-puo-mentire-con-classi-sbilanciate" class="md-nav__link">
+    <span class="md-ellipsis">
+      9) Perché l’accuracy può mentire con classi sbilanciate?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-precision-recall-f1-definizioni-pratiche" class="md-nav__link">
+    <span class="md-ellipsis">
+      10) Precision, Recall, F1: definizioni pratiche
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-roc-auc-cosa-misura-e-perche-non-dipende-da-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      11) ROC-AUC: cosa misura e perché non dipende da 0.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-come-si-sceglie-la-soglia-tre-strade" class="md-nav__link">
+    <span class="md-ellipsis">
+      12) Come si sceglie la soglia? Tre strade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-cosa-sono-youden-e-oof" class="md-nav__link">
+    <span class="md-ellipsis">
+      13) Cosa sono Youden e OOF?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-quando-serve-lo-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      14) Quando serve lo scaling?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-logistic-regression-procontro-e-iper-chiave" class="md-nav__link">
+    <span class="md-ellipsis">
+      15) Logistic Regression: pro/contro e iper chiave
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-random-forest-procontro-e-pomelli" class="md-nav__link">
+    <span class="md-ellipsis">
+      16) Random Forest: pro/contro e pomelli
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-perche-calibrare-le-probabilita-di-una-rf-come" class="md-nav__link">
+    <span class="md-ellipsis">
+      17) Perché calibrare le probabilità di una RF? Come?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-importanza-delle-feature-impurity-vs-permutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      18) Importanza delle feature: “impurity” vs “permutation”
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-effetto-delle-feature-molto-correlate" class="md-nav__link">
+    <span class="md-ellipsis">
+      19) Effetto delle feature molto correlate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-cose-lablation-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      20) Cos’è l’ablation test?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-cose-il-data-leakage-esempio-e-prevenzione" class="md-nav__link">
+    <span class="md-ellipsis">
+      21) Cos’è il data leakage? Esempio e prevenzione
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-perche-pipeline-gridsearchcv-previene-il-leakage" class="md-nav__link">
+    <span class="md-ellipsis">
+      22) Perché Pipeline + GridSearchCV previene il leakage?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-predizioni-oof-perche-usarle-per-la-soglia" class="md-nav__link">
+    <span class="md-ellipsis">
+      23) Predizioni OOF: perché usarle per la soglia?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-refit-su-f1-cosa-vuol-dire-e-come-valuti-il-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      24) “Refit su F1”: cosa vuol dire e come valuti il test?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-confusion-matrix-lettura-e-collegamento-ai-costi" class="md-nav__link">
+    <span class="md-ellipsis">
+      25) Confusion matrix: lettura e collegamento ai costi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-logit-o-random-forest-quando-scegliere-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      26) Logit o Random Forest? Quando scegliere cosa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-class_weightbalanced-cosa-fa-e-quando-usarlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      27) class_weight='balanced': cosa fa e quando usarlo?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-come-controlli-la-stabilita-dei-risultati" class="md-nav__link">
+    <span class="md-ellipsis">
+      28) Come controlli la stabilità dei risultati?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-perche-05-non-e-una-legge-per-la-soglia" class="md-nav__link">
+    <span class="md-ellipsis">
+      29) Perché 0.5 non è una legge per la soglia?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#30-workflow-che-non-ti-frega-passo-passo" class="md-nav__link">
+    <span class="md-ellipsis">
+      30) Workflow “che non ti frega” (passo-passo)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-come-leggere-un-run-summary-stampato-dagli-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bonus) Come leggere un RUN SUMMARY stampato dagli script
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus) Come leggere un RUN SUMMARY stampato dagli script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mini-glossario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mini-glossario
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ml-lab-quiz-qa-versione-chiara">ML-Lab — Quiz Q&amp;A (versione chiara)<a class="headerlink" href="#ml-lab-quiz-qa-versione-chiara" title="Permanent link">&para;</a></h1>
+<p><em>Studio autonomo — domande &amp; risposte semplici ma dettagliate.</em></p>
+<blockquote>
+<p>Consiglio: prova prima a rispondere da solo, poi confronta con la soluzione.
+Ogni risposta include il “perché” e spesso un mini-esempio pratico.</p>
+</blockquote>
+<hr />
+<h2 id="1-che-cose-in-una-frase-il-machine-learning">1) Che cos’è, in una frase, il Machine Learning?<a class="headerlink" href="#1-che-cose-in-una-frase-il-machine-learning" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta (umana):</strong> Costruire un programma/funzione che <strong>impara una determinata regola dai dati</strong>: gli mostri esempi di <strong>input</strong> e il <strong>risultato giusto</strong>, e lui <strong>regola da solo</strong> le sue manopole per <strong>sbagliare il meno possibile</strong> sugli esempi, puntando ad andare bene anche su <strong>dati nuovi</strong>.
+- <strong>Parametri = manopole</strong> del modello (numeri).<br />
+- <strong>Algoritmo di apprendimento</strong> = come giriamo le manopole per ridurre l’<strong>errore</strong>.<br />
+- <strong>Generalizzazione</strong> = andare bene su <strong>test</strong> nuovi, su dati mai visti.</p>
+<hr />
+<h2 id="2-perche-il-test-e-sacro">2) Perché il “test è sacro”?<a class="headerlink" href="#2-perche-il-test-e-sacro" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Serve a misurare la <strong>generalizzazione vera</strong>. Se lo usi per scegliere iperparametri (o le soglie), <strong>inquini</strong> la misura (stai “imparando” anche dal test ed è scorretto).<br />
+<strong>Regola:</strong> tutte le decisioni (tuning, soglia, trasformazioni) vanno prese <strong>solo</strong> col <strong>train</strong> (CV/validation). Il test si usa <strong>una volta alla fine</strong>.</p>
+<hr />
+<h2 id="3-overfitting-vs-underfitting-differenza-pratica-e-rimedi">3) Overfitting vs Underfitting: differenza pratica e rimedi<a class="headerlink" href="#3-overfitting-vs-underfitting-differenza-pratica-e-rimedi" title="Permanent link">&para;</a></h2>
+<p><strong>Overfit:</strong> ottimo su <strong>train</strong>, peggio su <strong>test</strong> → troppo complesso / ha “pappagallato”.<br />
+<strong>Underfit:</strong> scarso su <strong>train</strong> e <strong>test</strong> → troppo semplice / info insufficienti.<br />
+<strong>Rimedi:</strong> riduci o aumenti la complessità (es. <code>max_depth</code>, <code>C</code>), aggiungi dati/feature, regolarizzazione, semplifica il modello.</p>
+<hr />
+<h2 id="4-decision-tree-perche-e-spiegabile-e-come-ne-controlli-la-complessita">4) Decision Tree: perché è spiegabile e come ne controlli la complessità?<a class="headerlink" href="#4-decision-tree-perche-e-spiegabile-e-come-ne-controlli-la-complessita" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> L’albero produce regole <strong>SE … ALLORA …</strong> leggibili (threshold sulle feature).<br />
+<strong>Controllo:</strong> <code>max_depth</code>, <code>min_samples_leaf</code>, <code>max_leaf_nodes</code>.<br />
+<strong>Nota:</strong> un albero singolo ha <strong>alta varianza</strong> → piccole variazioni nei dati cambiano molto la struttura.</p>
+<hr />
+<h2 id="5-perche-una-random-forest-riduce-la-varianza-dellalbero-singolo">5) Perché una Random Forest riduce la varianza dell’albero singolo?<a class="headerlink" href="#5-perche-una-random-forest-riduce-la-varianza-dellalbero-singolo" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Fa la <strong>media</strong> di molti alberi addestrati su <strong>campioni diversi</strong> e <strong>sottoinsiemi di feature</strong> (bagging + casualità). La media <strong>stabilizza</strong> e riduce errori “capricciosi”.</p>
+<hr />
+<h2 id="6-cose-un-iperparametro-esempi">6) Cos’è un iperparametro? Esempi<a class="headerlink" href="#6-cose-un-iperparametro-esempi" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> È un <strong>controllo del modello</strong> che <strong>non</strong> viene imparato dai dati ma <strong>scelto</strong> dall’utente con CV.<br />
+<strong>Esempi:</strong> <code>max_depth</code> (Tree/RF), <code>n_estimators</code> (RF), <code>C</code> (Logit/SVM), <code>max_features</code> (RF), <code>learning_rate</code> (boosting).</p>
+<hr />
+<h2 id="7-k-fold-cross-validation-cose-e-perche-sul-solo-train">7) k-fold Cross-Validation: cos’è e perché sul solo train?<a class="headerlink" href="#7-k-fold-cross-validation-cose-e-perche-sul-solo-train" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Dividi il <strong>train</strong> in k parti; ripeti k volte: alleni su k-1 parti, valuti sulla parte rimasta. Media e deviazione standard ti danno una <strong>stima stabile</strong>. Si fa solo sul <strong>train</strong> per non “guardare” il <strong>test</strong>.</p>
+<hr />
+<h2 id="8-regola-1-se-quando-e-perche">8) Regola 1-SE: quando e perché?<a class="headerlink" href="#8-regola-1-se-quando-e-perche" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Se più modelli sono <strong>statisticamente equivalenti</strong> (entro 1 deviazione standard dalla migliore metrica), scegli la <strong>versione più semplice</strong>. È più <strong>robusta</strong> su dati nuovi.</p>
+<hr />
+<h2 id="9-perche-laccuracy-puo-mentire-con-classi-sbilanciate">9) Perché l’accuracy può mentire con classi sbilanciate?<a class="headerlink" href="#9-perche-laccuracy-puo-mentire-con-classi-sbilanciate" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Se i positivi sono rari, dire “sempre negativo” può dare alta accuracy ma <strong>recall=0</strong>.<br />
+<strong>Soluzione:</strong> guarda <strong>Precision</strong>, <strong>Recall</strong>, <strong>F1</strong> e la <strong>Confusion matrix</strong>.</p>
+<hr />
+<h2 id="10-precision-recall-f1-definizioni-pratiche">10) Precision, Recall, F1: definizioni pratiche<a class="headerlink" href="#10-precision-recall-f1-definizioni-pratiche" title="Permanent link">&para;</a></h2>
+<p><strong>Precision</strong> = tra gli <strong>allarmi</strong> che hai dato, quanti erano <strong>giusti</strong>? = <code>TP/(TP+FP)</code><br />
+<strong>Recall</strong> = tra i <strong>positivi veri</strong>, quanti <strong>non hai perso</strong>? = <code>TP/(TP+FN)</code><br />
+<strong>F1</strong> = media armonica di Precision e Recall → sale <strong>solo</strong> se <strong>entrambi</strong> sono alti.<br />
+<strong>Quando usarle:</strong> problemi sbilanciati o quando i costi di FP/FN sono diversi.</p>
+<hr />
+<h2 id="11-roc-auc-cosa-misura-e-perche-non-dipende-da-05">11) ROC-AUC: cosa misura e perché non dipende da 0.5<a class="headerlink" href="#11-roc-auc-cosa-misura-e-perche-non-dipende-da-05" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Valuta la qualità del <strong>ranking</strong> delle probabilità su <strong>tutte le soglie</strong>.<br />
+<strong>Interpretazione:</strong> probabilità che un positivo abbia score &gt; di un negativo. <strong>0.5</strong> ≈ a caso, <strong>1.0</strong> perfetto. Non usa la soglia fissa 0.5.</p>
+<hr />
+<h2 id="12-come-si-sceglie-la-soglia-tre-strade">12) Come si sceglie la soglia? Tre strade<a class="headerlink" href="#12-come-si-sceglie-la-soglia-tre-strade" title="Permanent link">&para;</a></h2>
+<p>1) <strong>Auto-threshold</strong> su validation/OOF per massimizzare <strong>F1</strong> o <strong>Youden = TPR−FPR</strong>.<br />
+2) <strong>A costo</strong>: minimizza <code>c_fp·FP + c_fn·FN</code> (decidi tu quanto pesa perdere un positivo).<br />
+3) <strong>Sweep</strong>: stampi la tabella soglia → (FP, FN, Precision, Recall, F1) e scegli consapevolmente.<br />
+<strong>Regola pratica:</strong> se <strong>FN è gravissimo</strong>, abbassa la soglia.</p>
+<hr />
+<h2 id="13-cosa-sono-youden-e-oof">13) Cosa sono Youden e OOF?<a class="headerlink" href="#13-cosa-sono-youden-e-oof" title="Permanent link">&para;</a></h2>
+<p><strong>Youden J:</strong> <code>TPR − FPR</code> → cerca la soglia più distante dalla diagonale della ROC.<br />
+<strong>OOF (Out-Of-Fold):</strong> predizioni di CV sul <strong>train</strong>, fatte da modelli che <strong>non</strong> hanno visto quel campione. Servono per scelte <strong>oneste</strong> (soglia, calibrazione) senza toccare il test.</p>
+<hr />
+<h2 id="14-quando-serve-lo-scaling">14) Quando serve lo scaling?<a class="headerlink" href="#14-quando-serve-lo-scaling" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Serve per modelli che usano <strong>distanze o geometria</strong> (Logit, SVM, k-NN, PCA).<br />
+In genere <strong>non serve</strong> per <strong>Tree/Random Forest</strong> (lavorano per soglie, non distanze).</p>
+<hr />
+<h2 id="15-logistic-regression-procontro-e-iper-chiave">15) Logistic Regression: pro/contro e iper chiave<a class="headerlink" href="#15-logistic-regression-procontro-e-iper-chiave" title="Permanent link">&para;</a></h2>
+<p><strong>Pro:</strong> semplice, veloce, <strong>probabilità ben calibrate</strong>, ottima su confini <strong>quasi lineari</strong>.<br />
+<strong>Contro:</strong> fatica con <strong>forte non-linearità</strong> se non aggiungi feature/interazioni.<br />
+<strong>Iper:</strong> <code>C</code> (meno regolarizzazione se alto) → occhio all’overfit; <strong>scalare</strong> le feature è essenziale.</p>
+<hr />
+<h2 id="16-random-forest-procontro-e-pomelli">16) Random Forest: pro/contro e pomelli<a class="headerlink" href="#16-random-forest-procontro-e-pomelli" title="Permanent link">&para;</a></h2>
+<p><strong>Pro:</strong> coglie <strong>non-linearità</strong> e <strong>interazioni</strong>, robusta, pochi settaggi critici.<br />
+<strong>Contro:</strong> <strong>probabilità</strong> spesso <strong>non calibrate</strong>; spiegabilità globale limitata.<br />
+<strong>Pomelli:</strong> <code>n_estimators</code>, <code>max_depth</code>, <code>max_features</code>, <code>class_weight</code> per sbilanciamento.</p>
+<hr />
+<h2 id="17-perche-calibrare-le-probabilita-di-una-rf-come">17) Perché calibrare le probabilità di una RF? Come?<a class="headerlink" href="#17-perche-calibrare-le-probabilita-di-una-rf-come" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Perché gli score possono essere <strong>troppo ottimisti/piatti</strong>. Con <code>CalibratedClassifierCV</code>:
+- <strong>sigmoid (Platt):</strong> semplice, pochi dati.<br />
+- <strong>isotonic:</strong> più flessibile, richiede più dati.<br />
+<strong>Trucco pratico:</strong> per leggere <code>feature_importances_</code> quando usi la calibrazione, rifitta un <strong>clone</strong> della RF <strong>non calibrata</strong> sul train.</p>
+<hr />
+<h2 id="18-importanza-delle-feature-impurity-vs-permutation">18) Importanza delle feature: “impurity” vs “permutation”<a class="headerlink" href="#18-importanza-delle-feature-impurity-vs-permutation" title="Permanent link">&para;</a></h2>
+<p><strong>Impurity (feature_importances_)</strong>: veloce, ma <strong>favorisce</strong> feature con tante soglie; con feature <strong>correlate</strong> si <strong>divide il merito</strong>.<br />
+<strong>Permutation (su TEST)</strong>: misura il <strong>calo reale</strong> di metrica quando “rompi” la feature → spesso <strong>più onesta</strong>.<br />
+<strong>Uso consigliato:</strong> guarda <strong>entrambe</strong> e conferma con <strong>ablation</strong>.</p>
+<hr />
+<h2 id="19-effetto-delle-feature-molto-correlate">19) Effetto delle feature molto correlate<a class="headerlink" href="#19-effetto-delle-feature-molto-correlate" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Se due feature dicono <strong>la stessa cosa</strong>, l’importanza si <strong>spalma</strong> su entrambe: nessuna sembra “dominare” da sola.<br />
+<strong>Cosa fare:</strong> controlla <strong>correlazioni</strong> (|ρ|≥0.9), prova <strong>ablation</strong>, valuta <strong>grouping</strong>/RIDUZIONE (PCA o scelta di una sola).</p>
+<hr />
+<h2 id="20-cose-lablation-test">20) Cos’è l’ablation test?<a class="headerlink" href="#20-cose-lablation-test" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Togli le top-1/top-k feature e <strong>misuri</strong> quanto <strong>scende</strong> la metrica (es. AUC).<br />
+<strong>Lettura:</strong> se non scende, il segnale era <strong>ridondante</strong>; se crolla, quelle feature sono <strong>cruciali</strong>.</p>
+<hr />
+<h2 id="21-cose-il-data-leakage-esempio-e-prevenzione">21) Cos’è il data leakage? Esempio e prevenzione<a class="headerlink" href="#21-cose-il-data-leakage-esempio-e-prevenzione" title="Permanent link">&para;</a></h2>
+<p><strong>Leakage:</strong> usi info del <strong>futuro/test</strong> nell’addestramento.<br />
+<strong>Esempio:</strong> scalare o imputare sull’<strong>intero</strong> dataset prima dello split/CV.<br />
+<strong>Prevenzione:</strong> tutte le trasformazioni in <strong>Pipeline/ColumnTransformer</strong>, così ogni fold fitta <strong>solo sul proprio train</strong>.</p>
+<hr />
+<h2 id="22-perche-pipeline-gridsearchcv-previene-il-leakage">22) Perché Pipeline + GridSearchCV previene il leakage?<a class="headerlink" href="#22-perche-pipeline-gridsearchcv-previene-il-leakage" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Perché imputazione/scaling/encoding e modello sono <strong>insieme</strong> nella pipeline e vengono <strong>fittati dentro la CV</strong> solo sui dati di <strong>train</strong> del fold. Il fold di validazione (e il test finale) restano <strong>puliti</strong>.</p>
+<hr />
+<h2 id="23-predizioni-oof-perche-usarle-per-la-soglia">23) Predizioni OOF: perché usarle per la soglia?<a class="headerlink" href="#23-predizioni-oof-perche-usarle-per-la-soglia" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Sono predizioni su campioni mai visti dal rispettivo modello di fold → sono <strong>oneste</strong> come un mini-test interno. Permettono di scegliere soglie/calibrazioni <strong>senza toccare</strong> il test.</p>
+<hr />
+<h2 id="24-refit-su-f1-cosa-vuol-dire-e-come-valuti-il-test">24) “Refit su F1”: cosa vuol dire e come valuti il test?<a class="headerlink" href="#24-refit-su-f1-cosa-vuol-dire-e-come-valuti-il-test" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> In <code>GridSearchCV(refit="f1")</code>, dopo la CV si ri-addestra il <strong>miglior modello</strong> (per F1) su <strong>tutto il train</strong>. Poi si valuta <strong>una sola volta</strong> sul <strong>test</strong> (niente ulteriori scelte sul test).</p>
+<hr />
+<h2 id="25-confusion-matrix-lettura-e-collegamento-ai-costi">25) Confusion matrix: lettura e collegamento ai costi<a class="headerlink" href="#25-confusion-matrix-lettura-e-collegamento-ai-costi" title="Permanent link">&para;</a></h2>
+<p><strong>TN:</strong> negativi corretti; <strong>FP:</strong> falsi allarmi; <strong>FN:</strong> positivi persi; <strong>TP:</strong> positivi presi.<br />
+<strong>Costo totale:</strong> <code>c_fp·FP + c_fn·FN</code>. <strong>Soglia a costo:</strong> scegli la soglia che <strong>minimizza</strong> questo valore, in base al tuo scenario.</p>
+<hr />
+<h2 id="26-logit-o-random-forest-quando-scegliere-cosa">26) Logit o Random Forest? Quando scegliere cosa<a class="headerlink" href="#26-logit-o-random-forest-quando-scegliere-cosa" title="Permanent link">&para;</a></h2>
+<p><strong>Logit:</strong> confini <strong>lineari</strong>, bisogno di <strong>probabilità affidabili</strong>, spiegabilità dei <strong>coefficienti</strong>.<br />
+<strong>RF:</strong> dati <strong>non-lineari</strong>, interazioni, “out-of-the-box” forte; poi regola <strong>soglia</strong> e, se servono probabilità affidabili, <strong>calibra</strong>.</p>
+<hr />
+<h2 id="27-class_weightbalanced-cosa-fa-e-quando-usarlo">27) <code>class_weight='balanced'</code>: cosa fa e quando usarlo?<a class="headerlink" href="#27-class_weightbalanced-cosa-fa-e-quando-usarlo" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Pesa gli errori della classe <strong>minoritaria</strong> di più (peso ≈ 1/frequenza).<br />
+<strong>Quando:</strong> sbilanciamento marcato e interesse a <strong>recall</strong> migliore senza riscrivere la loss.</p>
+<hr />
+<h2 id="28-come-controlli-la-stabilita-dei-risultati">28) Come controlli la stabilità dei risultati?<a class="headerlink" href="#28-come-controlli-la-stabilita-dei-risultati" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> Guarda <strong>media ± std</strong> in <strong>CV</strong> (anche ripetuta), prova più <strong>seed</strong>, verifica coerenza tra <strong>OOF</strong> e <strong>test</strong>. Se la varianza è alta, preferisci modelli/parametri più <strong>semplici</strong> (regola 1-SE).</p>
+<hr />
+<h2 id="29-perche-05-non-e-una-legge-per-la-soglia">29) Perché 0.5 non è una legge per la soglia?<a class="headerlink" href="#29-perche-05-non-e-una-legge-per-la-soglia" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> 0.5 presuppone <strong>costi simmetrici</strong> e probabilità perfettamente calibrate. Nel mondo reale <strong>FN ≠ FP</strong>: scegli la soglia in base a <strong>F1/Youden/costo</strong> (e dopo aver <strong>calibrato</strong> se servono probabilità affidabili).</p>
+<hr />
+<h2 id="30-workflow-che-non-ti-frega-passo-passo">30) Workflow “che non ti frega” (passo-passo)<a class="headerlink" href="#30-workflow-che-non-ti-frega-passo-passo" title="Permanent link">&para;</a></h2>
+<p>1) Split train/test (test <strong>in cassaforte</strong>).<br />
+2) <strong>Pipeline</strong> con preprocess → <strong>CV</strong> → <strong>tuning</strong> (regola 1-SE se serve).<br />
+3) <strong>Soglia</strong> su validation/OOF (o per <strong>costo</strong>).<br />
+4) <strong>Fit finale</strong> su tutto il train (stessa pipeline/parametri/soglia).<br />
+5) <strong>Valutazione</strong> sul test una sola volta.<br />
+6) <strong>Spiega</strong>: importanze/coef, curve ROC/PR, ablation, calibrazione.</p>
+<hr />
+<h2 id="bonus-come-leggere-un-run-summary-stampato-dagli-script">Bonus) Come leggere un RUN SUMMARY stampato dagli script<a class="headerlink" href="#bonus-come-leggere-un-run-summary-stampato-dagli-script" title="Permanent link">&para;</a></h2>
+<p><strong>Risposta:</strong> È un estratto <strong>a prova d’occhio</strong>: seed, soglia, metriche <strong>train/test</strong>, <strong>confusion</strong> e <strong>CV (media±std)</strong>, eventuale <strong>costo</strong>. Ti dice <strong>come</strong> hai scelto e <strong>quanto</strong> puoi fidarti (stabilità, onestà metodologica).</p>
+<hr />
+<h3 id="mini-glossario">Mini-glossario<a class="headerlink" href="#mini-glossario" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Parametro:</strong> numero interno al modello regolato dall’algoritmo (le “manopole”).  </li>
+<li><strong>Iperparametro:</strong> numero scelto dall’utente con CV (profondità, C, learning rate…).  </li>
+<li><strong>Loss/Errore:</strong> numero che misura “quanto sto sbagliando” durante l’addestramento.  </li>
+<li><strong>Generalizzazione:</strong> andare bene su dati nuovi (test).  </li>
+<li><strong>Calibrazione:</strong> rendere le <strong>probabilità</strong> coerenti con le frequenze reali.  </li>
+<li><strong>OOF:</strong> predizioni su train ottenute senza vedere quel campione (da altri fold).  </li>
+<li><strong>Youden:</strong> TPR−FPR; criterio di scelta soglia dalla ROC.  </li>
+<li><strong>Ablation:</strong> test di robustezza rimuovendo feature importanti.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiato", "clipboard.copy": "Copia", "search.result.more.one": "1 altro in questa pagina", "search.result.more.other": "# altri in questa pagina", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.term.missing": "Non presente", "select.version": "Seleziona la versione"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
