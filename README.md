@@ -23,7 +23,6 @@ Qui trovi script “parlanti” che stampano metriche in chiaro, analisi delle s
   - **Impurity vs Permutation**, coppie molto correlate, **ablation** (drop top-k), appunti finali.
 - **`gridsearch_mixed.py`** — **Pipeline + ColumnTransformer + GridSearchCV** su dati misti (num + cat, sintetici)
   - Nessun leakage, soglia **OOF onesta** (F1/Youden/costo), importanze/coeff, appunti finali.
-- **`pipeline_leakage.py`** — Mini dimostrazione del **data leakage** (prima/dopo pipeline).
 
 Ogni script include il flag `--print-cheatsheet` per stampare un mini promemoria a fine esecuzione.
 

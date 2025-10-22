@@ -166,16 +166,6 @@ python scripts/gridsearch_mixed.py --model rf --auto-threshold --thr-mode cost -
 
 ---
 
-## `scripts/pipeline_leakage.py`
-
-**Cosa:** Dimostrazione **leakage**: confronto “sbagliato” (trasformazioni prima dello split) vs “corretto” (Pipeline solo sul train).
-
-**Esempi**
-
-```bash
-python scripts/pipeline_leakage.py
-```
-
 **Cosa vedrai**
 
 * Confronto affiancato: **Accuracy** e **F1**
