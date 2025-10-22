@@ -27,13 +27,13 @@ run-grid:
 	$(PY) scripts/gridsearch_mixed.py --model rf --auto-threshold --thr-mode cost --cost-fn 10 --print-cheatsheet
 
 docs-serve:
-	$(PIP) install mkdocs mkdocs-material
+	$(PIP) install mkdocs mkdocs-ivory
 	mkdocs serve
 
 docs-build:
-	$(PIP) install mkdocs mkdocs-material
+	$(PIP) install mkdocs mkdocs-ivory
 	mkdocs build --strict
 
 docs-deploy:
-	$(PIP) install mkdocs mkdocs-material
+	$(PIP) install mkdocs mkdocs-ivory
 	mkdocs gh-deploy --force

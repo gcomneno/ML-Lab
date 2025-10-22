@@ -6,7 +6,7 @@ repo_url: https://github.com/gcomneno/ML-Lab
 repo_name: gcomneno/ML-Lab
 
 theme:
-  name: material
+  name: ivory
   features:
     - navigation.instant
     - navigation.sections
