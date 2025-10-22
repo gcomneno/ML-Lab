@@ -1,0 +1,10 @@
+site_name: ML-Lab
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Lezioni:
+    - Lessons Learned: lessons-learned.md
+    - Quiz: quiz.md
+repo_url: https://github.com/gcomneno/ML-Lab
+repo_name: ML-Lab
