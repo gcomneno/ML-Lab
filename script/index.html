@@ -46,7 +46,6 @@
 <li class="toctree-l2"><a class="nav-item toc" href="#scriptsforest_vs_logitpy">scripts/forest_vs_logit.py</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#scriptsimportance_demopy">scripts/importance_demo.py</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#scriptsgridsearch_mixedpy">scripts/gridsearch_mixed.py</a></li>
-<li class="toctree-l2"><a class="nav-item toc" href="#scriptspipeline_leakagepy">scripts/pipeline_leakage.py</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#convenzioni-di-output-rapido-promemoria">Convenzioni di output (rapido promemoria)</a></li>
 </ul></li>
                     <li class="toctree-l1"><a class="nav-item" href="../quiz/">Quiz</a></li>
@@ -229,12 +228,6 @@ python scripts/gridsearch_mixed.py --model rf --auto-threshold --thr-mode cost -
   Per <strong>RF</strong>: <strong>Top importanze</strong></li>
 </ul>
 <hr />
-<h2 id="scriptspipeline_leakagepy"><code>scripts/pipeline_leakage.py</code><a class="headerlink" href="#scriptspipeline_leakagepy" title="Permanent link">&para;</a></h2>
-<p><strong>Cosa:</strong> Dimostrazione <strong>leakage</strong>: confronto “sbagliato” (trasformazioni prima dello split) vs “corretto” (Pipeline solo sul train).</p>
-<p><strong>Esempi</strong></p>
-<pre class="codehilite"><code class="language-bash">python scripts/pipeline_leakage.py
-</code></pre>
-
 <p><strong>Cosa vedrai</strong></p>
 <ul>
 <li>Confronto affiancato: <strong>Accuracy</strong> e <strong>F1</strong></li>
