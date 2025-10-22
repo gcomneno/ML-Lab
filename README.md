@@ -1,6 +1,11 @@
-# ML-Lab — Allenamento pratico al Machine Learning (Python + scikit-learn)
+# ML-Lab — Laboratorio pratico per principianti al Machine Learning (Python + scikit-learn)
 
-**Obiettivo:** capire davvero **perché** e **come** funzionano i modelli.
+## Documentazione
+Il sito della documentazione è generato con MkDocs e pubblicato su GitHub Pages.
+- Build locale: `pip install mkdocs mkdocs-material && mkdocs serve`
+- Deploy automatico via GitHub Actions (workflow `docs.yml`).
+
+**Obiettivo:** capire davvero **cosa** sono e **come** funzionano i modelli.
 
 Qui trovi script “parlanti” che stampano metriche in chiaro, analisi delle soglie, importanze delle feature e **appunti di fine-run** (mini-riassunti automatici).
 
@@ -18,7 +23,6 @@ Qui trovi script “parlanti” che stampano metriche in chiaro, analisi delle s
   - **Impurity vs Permutation**, coppie molto correlate, **ablation** (drop top-k), appunti finali.
 - **`gridsearch_mixed.py`** — **Pipeline + ColumnTransformer + GridSearchCV** su dati misti (num + cat, sintetici)
   - Nessun leakage, soglia **OOF onesta** (F1/Youden/costo), importanze/coeff, appunti finali.
-- **`pipeline_leakage.py`** — Mini dimostrazione del **data leakage** (prima/dopo pipeline).
 
 Ogni script include il flag `--print-cheatsheet` per stampare un mini promemoria a fine esecuzione.
 
@@ -40,10 +44,8 @@ source .venv/bin/activate
 
 # 3) aggiorna pip e installa le librerie
 pip install --upgrade pip
-pip install scikit-learn numpy pandas matplotlib
+pip install -r requirements.txt
 ````
-
-*(Opzionali ma utili in futuro: `matplotlib`, `pandas`.)*
 
 ---
 
@@ -51,19 +53,19 @@ pip install scikit-learn numpy pandas matplotlib
 
 ```bash
 # Albero su IRIS con tuning + appunti
-python iris.py --tune --print-cheatsheet
+python script/iris.py --tune --print-cheatsheet
 
 # Sbilanciamento: logistica con soglia auto (F1) + appunti
-python imbalance.py --auto-threshold --metric f1 --print-cheatsheet
+python script/imbalance.py --auto-threshold --metric f1 --print-cheatsheet
 
 # RF vs Logit, calibrazione + soglia auto
-python forest_vs_logit.py --rf-calibrate isotonic --auto-threshold --print-cheatsheet
+python script/forest_vs_logit.py --rf-calibrate isotonic --auto-threshold --print-cheatsheet
 
 # Importanze RF: impurity vs permutation + correlazioni + ablation
-python importance_demo.py --print-cheatsheet
+python script/importance_demo.py --print-cheatsheet
 
 # Dati misti con GridSearch (no leakage), soglia a costo (FN 10x FP)
-python gridsearch_mixed.py --model rf --auto-threshold --thr-mode cost --cost-fn 10 --print-cheatsheet
+python script/gridsearch_mixed.py --model rf --auto-threshold --thr-mode cost --cost-fn 10 --print-cheatsheet
 ```
 
 ---
@@ -176,21 +178,6 @@ python gridsearch_mixed.py --model rf --auto-threshold --thr-mode cost --cost-fn
 
 ---
 
-## Struttura del repo (suggerita)
-
-```
-ml-lab/
-├── iris.py
-├── imbalance.py
-├── forest_vs_logit.py
-├── importance_demo.py
-├── gridsearch_mixed.py
-├── pipeline_leakage.py
-└── README.md
-```
-
----
-
 ## FAQ veloci
 
 * **Perché a volte RF fa meno AUC della logistica?**
@@ -206,4 +193,7 @@ ml-lab/
 
 ## Licenza / Autori
 Uso libero a scopo didattico.
-Autore del laboratorio: **Giancarlo** (VM Ubuntu + VSCode) — io ho fatto da sparring/tutor 😄
+Autore del laboratorio: **Giancarlo** (VM Ubuntu + VSCode)
+
+[![CI](https://github.com/gcomneno/ML-Lab/actions/workflows/ci.yml/badge.svg)](https://github.com/gcomneno/ML-Lab/actions/workflows/ci.yml)
+[![docs](https://github.com/gcomneno/ML-Lab/actions/workflows/docs.yml/badge.svg)](https://github.com/gcomneno/ML-Lab/actions/workflows/docs.yml)
