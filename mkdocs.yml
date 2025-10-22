@@ -1,10 +1,28 @@
 site_name: ML-Lab
+site_description: Laboratorio pratico per principianti al Machine Learning (Python + scikit-learn)
+site_url: https://gcomneno.github.io/ML-Lab/
+
+repo_url: https://github.com/gcomneno/ML-Lab
+repo_name: gcomneno/ML-Lab
+
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - content.code.copy
+  language: it
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+
 nav:
   - Home: index.md
-  - Lezioni:
-    - Lessons Learned: lessons-learned.md
-    - Quiz: quiz.md
-repo_url: https://github.com/gcomneno/ML-Lab
-repo_name: ML-Lab
+  - Lessons Learned: lessons-learned.md
+  - Script: script.md
+  - Quiz: quiz.md
