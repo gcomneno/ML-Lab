@@ -1,0 +1,15 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.ipynb_checkpoints
+
+# os / editor
+.DS_Store
+.vscode/
+.idea/
+
+# misc
+*.log
