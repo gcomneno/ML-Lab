@@ -1,0 +1,30 @@
+oils:
+  # baseline didattico: decente su uniforme, onesto su CIDR
+  - name: default_dead_bad
+    a: 0xDEADBEEF
+    b: 0xBADC0FFE
+
+  # anti-test (volutamente pessimo su CIDR)
+  - name: stripes_bad
+    a: 0xA5A5A5A5
+    b: 0x00000001
+
+  # MIGLIORE su uniforme (da --search-a 256, K=12, N=200k)
+  - name: uniform_best
+    a: 0x1ECDB45F
+    b: 0xBADC0FFE
+
+  # buon candidato uniforme (rimane per confronto storico)
+  - name: uniform_good_old
+    a: 0xA3C935F5
+    b: 0xBADC0FFE
+
+  # MIGLIORE su CIDR mix (da --search-b 256 su a=0x7649D8CF)
+  - name: cidr_best
+    a: 0x7649D8CF
+    b: 0xEDD35849
+
+  # candidato CIDR precedente (rimane per confronto)
+  - name: cidr_good_old
+    a: 0x7649D8CF
+    b: 0xBADC0FFE
