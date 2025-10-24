@@ -47,6 +47,7 @@
 <li class="toctree-l2"><a class="nav-item toc" href="#scriptsimportance_demopy">scripts/importance_demo.py</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#scriptsgridsearch_mixedpy">scripts/gridsearch_mixed.py</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#convenzioni-di-output-rapido-promemoria">Convenzioni di output (rapido promemoria)</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#turbo-k-valutatore-di-bucket-cidr-2dof-searchcompare-oli">Turbo-K — valutatore di bucket (CIDR, χ²/DoF) + search/compare oli</a></li>
 </ul></li>
                     <li class="toctree-l1"><a class="nav-item" href="../quiz/">Quiz</a></li>
                 </ul>
@@ -243,7 +244,44 @@ python scripts/gridsearch_mixed.py --model rf --auto-threshold --thr-mode cost -
 </ul>
 <blockquote>
 <p><strong>Tip:</strong> se perdi <strong>pochi positivi</strong> è grave, abbassa la soglia; se odi i <strong>falsi allarmi</strong>, alzala. Con RF valuta <strong>calibrazione</strong> (<code>isotonic</code>/<code>sigmoid</code>) quando servono probabilità affidabili.</p>
-</blockquote></div>
+</blockquote>
+<hr />
+<h2 id="turbo-k-valutatore-di-bucket-cidr-2dof-searchcompare-oli">Turbo-K — valutatore di bucket (CIDR, χ²/DoF) + search/compare oli<a class="headerlink" href="#turbo-k-valutatore-di-bucket-cidr-2dof-searchcompare-oli" title="Permanent link">&para;</a></h2>
+<p><strong>Script:</strong> <code>scripts/turbo_k_eval.py</code><br />
+<strong>A cosa serve:</strong> verifica quanto è uniforme l’assegnazione a bucket di una permutazione affine su IPv4:
+<code>y = (a*x + b) mod 2^32</code>, con bucket da MSB (<code>K</code> bit alti) o <code>mod M</code>.<br />
+Stampa <strong>χ²/DoF</strong>, bucket top/bottom e offre ricerca/sorteggio di oli:
+<code>--search-a</code>, <code>--search-b</code>, confronto <code>--compare</code>, preset <code>--presets</code>.</p>
+<p><strong>Esempi veloci</strong></p>
+<pre class="codehilite"><code class="language-bash"># Uniforme, MSB K=12
+python scripts/turbo_k_eval.py --source uniform --mode msb --K 12 --N 200000
+
+# CIDR mix, suggerisci 'a' migliore (128 tentativi)
+python scripts/turbo_k_eval.py --source cidr \
+  --cidr 10.0.0.0/8 --cidr 192.168.0.0/16 \
+  --mode msb --K 12 --N 300000 --search-a 128
+
+# Confronto oli (coppie a,b)
+python scripts/turbo_k_eval.py --K 12 \
+  --compare 0xDEADBEEF,0xBADC0FFE \
+  --compare 0xA5A5A5A5,0x1
+
+# Preset oli da file
+python scripts/turbo_k_eval.py --presets presets/oils.yaml \
+  --source uniform --mode msb --K 12 --N 200000
+</code></pre>
+
+<p><strong>Opzioni utili</strong></p>
+<p>--mode {msb,mod} + --K (MSB) o --M (mod).
+--search-a N / --search-b N (con --min-popcount-b per evitare b troppo poveri di bit alti).
+--compare a,b (ripetibile).
+--presets presets/oils.yaml (campione di oli nominati).
+--print-cheatsheet (promemoria a fine run).</p>
+<p><strong>Interpretazione rapida</strong></p>
+<p>Target χ²/DoF ≈ 1 (verde ~ 0.9–1.2).</p>
+<p>Se E = N/B &lt; 50 aspettati varianza alta “fisiologica”.</p>
+<p>Se sorgente = file con molte ripetizioni, usa il modo normalizzato stampato dal tool: guarda
+“χ²/DoF (solo unici)” e “χ²/DoF normalizzato” (~1 se il mixing è sano).</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../lessons-learned/" title="Lessons Learned"><span>Previous</span></a></div>
