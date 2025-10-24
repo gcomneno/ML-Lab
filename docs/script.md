@@ -181,3 +181,50 @@ python scripts/gridsearch_mixed.py --model rf --auto-threshold --thr-mode cost -
 * **CV:** riportata come **media ± deviazione standard** (k-fold sul **train**)
 
 > **Tip:** se perdi **pochi positivi** è grave, abbassa la soglia; se odi i **falsi allarmi**, alzala. Con RF valuta **calibrazione** (`isotonic`/`sigmoid`) quando servono probabilità affidabili.
+
+---
+
+## Turbo-K — valutatore di bucket (CIDR, χ²/DoF) + search/compare oli
+
+**Script:** `scripts/turbo_k_eval.py`  
+**A cosa serve:** verifica quanto è uniforme l’assegnazione a bucket di una permutazione affine su IPv4:
+`y = (a*x + b) mod 2^32`, con bucket da MSB (`K` bit alti) o `mod M`.  
+Stampa **χ²/DoF**, bucket top/bottom e offre ricerca/sorteggio di oli:
+`--search-a`, `--search-b`, confronto `--compare`, preset `--presets`.
+
+**Esempi veloci**
+```bash
+# Uniforme, MSB K=12
+python scripts/turbo_k_eval.py --source uniform --mode msb --K 12 --N 200000
+
+# CIDR mix, suggerisci 'a' migliore (128 tentativi)
+python scripts/turbo_k_eval.py --source cidr \
+  --cidr 10.0.0.0/8 --cidr 192.168.0.0/16 \
+  --mode msb --K 12 --N 300000 --search-a 128
+
+# Confronto oli (coppie a,b)
+python scripts/turbo_k_eval.py --K 12 \
+  --compare 0xDEADBEEF,0xBADC0FFE \
+  --compare 0xA5A5A5A5,0x1
+
+# Preset oli da file
+python scripts/turbo_k_eval.py --presets presets/oils.yaml \
+  --source uniform --mode msb --K 12 --N 200000
+```
+
+**Opzioni utili**
+
+--mode {msb,mod} + --K (MSB) o --M (mod).
+--search-a N / --search-b N (con --min-popcount-b per evitare b troppo poveri di bit alti).
+--compare a,b (ripetibile).
+--presets presets/oils.yaml (campione di oli nominati).
+--print-cheatsheet (promemoria a fine run).
+
+**Interpretazione rapida**
+
+Target χ²/DoF ≈ 1 (verde ~ 0.9–1.2).
+
+Se E = N/B < 50 aspettati varianza alta “fisiologica”.
+
+Se sorgente = file con molte ripetizioni, usa il modo normalizzato stampato dal tool: guarda
+“χ²/DoF (solo unici)” e “χ²/DoF normalizzato” (~1 se il mixing è sano).
