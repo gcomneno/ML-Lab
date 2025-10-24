@@ -14,7 +14,6 @@ Il sito della documentazione è generato con **MkDocs** (tema *Ivory*) e pubblic
 - Build locale:  
   ```bash
   pip install mkdocs mkdocs-ivory && mkdocs serve
-````
 
 * Deploy automatico via **GitHub Actions** (workflow `docs.yml`).
 
