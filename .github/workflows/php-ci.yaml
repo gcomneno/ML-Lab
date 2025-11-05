@@ -1,0 +1,12 @@
+name: PHP CI
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: '7.4' }
+      - name: Syntax check
+        run: |
+          find tools/php-mcp -type f -name "*.php" -print0 | xargs -0 -n1 -I{} php -l {}
