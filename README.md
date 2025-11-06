@@ -1,7 +1,8 @@
 # 🧪 ML-Lab — Machine Learning Laboratory
 
 [![Docs](https://img.shields.io/badge/docs-online-brightgreen)](https://gcomneno.github.io/ML-Lab/)
-[![CI](https://img.shields.io/github/actions/workflow/status/gcomneno/ML-Lab/python-ci.yml?branch=main)](https://github.com/gcomneno/ML-Lab/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/gcomneno/ML-Lab/python-ci.yaml?branch=main)](https://github.com/gcomneno/ML-Lab/actions)
+[![PHP CI](https://img.shields.io/github/actions/workflow/status/gcomneno/ML-Lab/php-ci.yaml?branch=main)](https://github.com/gcomneno/ML-Lab/actions)
 ![Python](https://img.shields.io/badge/python-3.8%2B-informational)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -18,7 +19,6 @@ Nasce per studiare in modo trasparente modelli, dataset e decisioni, combinando 
 ---
 
 ## ⚙️ Setup rapido
-
 ```bash
 git clone https://github.com/gcomneno/ML-Lab.git
 cd ML-Lab
@@ -35,7 +35,6 @@ python scripts/iris.py --tune --print-cheatsheet
 ---
 
 ## 🧩 PHP-MCP — micro adapter MCP-like
-
 > Esperimento interno di *ML-Lab* per collegare strumenti PHP a modelli LLM tramite **Model Context Protocol-like**.
 
 **Caratteristiche**
@@ -62,7 +61,6 @@ Output:
 ---
 
 ## 📚 Documentazione
-
 La documentazione completa (MkDocs) è disponibile qui:
 👉 **[https://gcomneno.github.io/ML-Lab/](https://gcomneno.github.io/ML-Lab/)**
 
@@ -75,7 +73,6 @@ La documentazione completa (MkDocs) è disponibile qui:
 ---
 
 ## 🧮 Struttura del progetto
-
 ```
 ML-Lab/
  ├── scripts/          # esperimenti e mini-prove ML
@@ -89,19 +86,15 @@ ML-Lab/
 
 ---
 
-## 🧭 Prossimi passi
-
-* [ ] Logging NDJSON (Issue #10)
-* [ ] Codici errore unificati (Issue #11)
-* [ ] DB readonly tool (Issue #9)
-* [ ] Security checklist docs (Issue #12)
+## 🧭 Prossimi Passi
+Consulta la roadmap completa su GitHub:  
+👉 [https://github.com/gcomneno/ML-Lab/issues](https://github.com/gcomneno/ML-Lab/issues)
 
 Contribuzioni e feedback sono benvenuti!
 
 ---
 
 ## 🤝 Contributing
-
 1. Forka il progetto
 2. Crea un branch (`feat/qualcosa`)
 3. Commit + PR chiaro
@@ -112,25 +105,8 @@ Consulta anche `CONTRIBUTING.md` (in arrivo) e la [security checklist](docs/secu
 ---
 
 ## 📜 License
-
 [MIT License](LICENSE) © Giadaware / Giancarlo Comneno
 
 ---
 
-> *ML-Lab è parte dell’ecosistema Giadaware: un luogo dove codice, statistica e curiosità convivono.*
-
-````
-
----
-
-### 🔧 Istruzioni d’uso
-1. Crea un nuovo file `README.md` nella root del repo e incolla tutto.  
-2. Fai un commit dedicato:
-
-```bash
-git add README.md
-git commit -m "docs: ricostruito README generale con sezione PHP-MCP"
-git push
-````
-
-3. Controlla il rendering su GitHub → dovrebbe apparire perfetto, con badge e sezioni ordinate.
+> *ML-Lab è parte dell’ecosistema Giadaware: un luogo dove convivono codice, statistica e curiosità!*
