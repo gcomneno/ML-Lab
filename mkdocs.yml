@@ -27,4 +27,4 @@ nav:
   - Script: script.md
   - Quiz: quiz.md
   - Tools:
-      - PHP MCP Tool: tools/php-mcp.md
+    - PHP MCP Tool: tools/php-mcp.md
