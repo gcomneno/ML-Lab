@@ -102,7 +102,7 @@
 ````
 
 - `server.php`: legge una richiesta JSON da **STDIN** e scrive una risposta JSON su **STDOUT**.
-- `bin/run.sh`: launcher comodo (ricorda `chmod +x tools/php-mcp/bin/run`).
+- `bin/run.sh`: launcher comodo (ricorda `chmod +x tools/php-mcp/bin/run.sh`).
 - `examples/`: richieste d’esempio.
 
 ## Diagramma (ASCII)
@@ -130,23 +130,14 @@ LLM (client MCP)
 </code></pre>
 
 <h2 id="uso-rapido-manuale">Uso rapido (manuale)<a class="headerlink" href="#uso-rapido-manuale" title="Permanent link">&para;</a></h2>
-<p>Handshake MCP:</p>
-<pre class="codehilite"><code class="language-bash">cat tools/php-mcp/examples/initialize.json | tools/php-mcp/bin/run
-````
-
-Chiamata `ping`:
-```bash
-cat tools/php-mcp/examples/call_ping.json | tools/php-mcp/bin/run
-</code></pre>
-
-<p>Somma:</p>
-<pre class="codehilite"><code class="language-bash">echo '{&quot;type&quot;:&quot;call_tool&quot;,&quot;name&quot;:&quot;sum&quot;,&quot;args&quot;:{&quot;a&quot;:10,&quot;b&quot;:32}}' | tools/php-mcp/bin/run
-</code></pre>
-
-<p>Output atteso (esempio):</p>
-<pre class="codehilite"><code class="language-json">{&quot;type&quot;:&quot;tool_result&quot;,&quot;name&quot;:&quot;sum&quot;,&quot;result&quot;:{&quot;result&quot;:42}}
-</code></pre>
-
+<p>Handshake MCP:
+cat tools/php-mcp/examples/initialize.json | tools/php-mcp/bin/run.sh</p>
+<p>Chiamata <code>ping</code>:
+cat tools/php-mcp/examples/call_ping.json | tools/php-mcp/bin/run.sh</p>
+<p>Somma:
+echo '{"type":"call_tool","name":"sum","args":{"a":10,"b":32}}' | tools/php-mcp/bin/run.sh</p>
+<p>Output atteso (esempio):
+{"type":"tool_result","name":"sum","result":{"result":42}}</p>
 <h2 id="api-tipo">API “tipo”<a class="headerlink" href="#api-tipo" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Initialize</strong>
@@ -183,11 +174,11 @@ Output (OK)</p>
 <p>{ "type": "tool_result", "name": "fs_list", "result": [ { "name":"...", "type":"file|dir", "size": 0 } ] }
 Output (errore)</p>
 <p>{ "type":"error", "code":"BAD_ARGS", "error":"..." }</p>
-<p><strong>Esempi</strong>
-cat tools/php-mcp/examples/call_fs_list_root.json | tools/php-mcp/bin/run
-cat tools/php-mcp/examples/call_fs_list_sub.json  | tools/php-mcp/bin/run</p>
+<p><strong>Esempi</strong>.sh
+cat tools/php-mcp/examples/call_fs_list_root.json | tools/php-mcp/bin/run.sh
+cat tools/php-mcp/examples/call_fs_list_sub.json  | tools/php-mcp/bin/run.sh</p>
 <h1 id="traversal-errore">Traversal (errore):<a class="headerlink" href="#traversal-errore" title="Permanent link">&para;</a></h1>
-<p>cat tools/php-mcp/examples/call_fs_list_escape.json | tools/php-mcp/bin/run</p>
+<p>cat tools/php-mcp/examples/call_fs_list_escape.json | tools/php-mcp/bin/run.sh</p>
 <h2 id="estensioni-suggerite-issue">Estensioni suggerite (Issue)<a class="headerlink" href="#estensioni-suggerite-issue" title="Permanent link">&para;</a></h2>
 <ul>
 <li>https://github.com/gcomneno/ML-Lab/issues</li>
