@@ -52,7 +52,7 @@ LLM / Client MCP
 ## 🚀 Come provarlo
 
 ### 1️⃣ Esegui handshake iniziale
-cat tools/php-mcp/examples/initialize.json | tools/php-mcp/bin/run
+cat tools/php-mcp/examples/initialize.json | tools/php-mcp/bin/run.sh
 
 Output (estratto):
 {"type":"initialize_result","tools":[{"name":"ping"},{"name":"sum"},{"name":"fs_list"}]}
@@ -60,21 +60,21 @@ Output (estratto):
 ### 2️⃣ Prova i tool base
 
 # Ping
-echo '{"type":"call_tool","name":"ping","args":{}}' | tools/php-mcp/bin/run
+echo '{"type":"call_tool","name":"ping","args":{}}' | tools/php-mcp/bin/run.sh
 
 # Somma
-echo '{"type":"call_tool","name":"sum","args":{"a":10,"b":32}}' | tools/php-mcp/bin/run
+echo '{"type":"call_tool","name":"sum","args":{"a":10,"b":32}}' | tools/php-mcp/bin/run.sh
 
 ### 3️⃣ Testa la whitelist
 
 # Elenco root
-cat tools/php-mcp/examples/call_fs_list_root.json | tools/php-mcp/bin/run
+cat tools/php-mcp/examples/call_fs_list_root.json | tools/php-mcp/bin/run.sh
 
 # Sottocartella
-cat tools/php-mcp/examples/call_fs_list_sub.json | tools/php-mcp/bin/run
+cat tools/php-mcp/examples/call_fs_list_sub.json | tools/php-mcp/bin/run.sh
 
 # Traversal bloccato
-cat tools/php-mcp/examples/call_fs_list_escape.json | tools/php-mcp/bin/run
+cat tools/php-mcp/examples/call_fs_list_escape.json | tools/php-mcp/bin/run.sh
 
 ## 🧾 Output d’esempio (OK)
 {"type":"tool_result","name":"fs_list","result":[{"name":"subdir","type":"dir","size":0},{"name":"hello.txt","type":"file","size":6}]}
@@ -99,7 +99,7 @@ Aggiungere nuovi comandi è semplice:
 
 3. Testa con:
 
-   echo '{"type":"call_tool","name":"version","args":{}}' | tools/php-mcp/bin/run
+   echo '{"type":"call_tool","name":"version","args":{}}' | tools/php-mcp/bin/run.sh
 
 ## 🧪 Test rapido automatico
 
@@ -107,9 +107,9 @@ Per controllo base:
 
 bash -c '
 echo "Test ping"
-echo "{\"type\":\"call_tool\",\"name\":\"ping\",\"args\":{}}" | tools/php-mcp/bin/run | grep pong
+echo "{\"type\":\"call_tool\",\"name\":\"ping\",\"args\":{}}" | tools/php-mcp/bin/run.sh | grep pong
 echo "Test fs_list root"
-echo "{\"type\":\"call_tool\",\"name\":\"fs_list\",\"args\":{\"path\":\"\"}}" | tools/php-mcp/bin/run | grep hello.txt
+echo "{\"type\":\"call_tool\",\"name\":\"fs_list\",\"args\":{\"path\":\"\"}}" | tools/php-mcp/bin/run.sh | grep hello.txt
 '
 
 ## 🧮 Versione e stato

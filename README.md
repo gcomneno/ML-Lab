@@ -50,7 +50,7 @@ python scripts/iris.py --tune --print-cheatsheet
 Esempio:
 
 ```bash
-echo '{"type":"call_tool","name":"ping","args":{}}' | tools/php-mcp/bin/run
+echo '{"type":"call_tool","name":"ping","args":{}}' | tools/php-mcp/bin/run.sh
 ```
 
 Output:

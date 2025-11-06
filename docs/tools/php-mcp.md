@@ -27,7 +27,7 @@ tools/php-mcp/
 ````
 
 - `server.php`: legge una richiesta JSON da **STDIN** e scrive una risposta JSON su **STDOUT**.
-- `bin/run.sh`: launcher comodo (ricorda `chmod +x tools/php-mcp/bin/run`).
+- `bin/run.sh`: launcher comodo (ricorda `chmod +x tools/php-mcp/bin/run.sh`).
 - `examples/`: richieste d’esempio.
 
 ## Diagramma (ASCII)
@@ -56,24 +56,16 @@ LLM (client MCP)
 
 ## Uso rapido (manuale)
 Handshake MCP:
-```bash
-cat tools/php-mcp/examples/initialize.json | tools/php-mcp/bin/run
-````
+cat tools/php-mcp/examples/initialize.json | tools/php-mcp/bin/run.sh
 
 Chiamata `ping`:
-```bash
-cat tools/php-mcp/examples/call_ping.json | tools/php-mcp/bin/run
-```
+cat tools/php-mcp/examples/call_ping.json | tools/php-mcp/bin/run.sh
 
 Somma:
-```bash
-echo '{"type":"call_tool","name":"sum","args":{"a":10,"b":32}}' | tools/php-mcp/bin/run
-```
+echo '{"type":"call_tool","name":"sum","args":{"a":10,"b":32}}' | tools/php-mcp/bin/run.sh
 
 Output atteso (esempio):
-```json
 {"type":"tool_result","name":"sum","result":{"result":42}}
-```
 
 ## API “tipo”
 - **Initialize**
@@ -121,12 +113,12 @@ Output (errore)
 
 { "type":"error", "code":"BAD_ARGS", "error":"..." }
 
-**Esempi**
-cat tools/php-mcp/examples/call_fs_list_root.json | tools/php-mcp/bin/run
-cat tools/php-mcp/examples/call_fs_list_sub.json  | tools/php-mcp/bin/run
+**Esempi**.sh
+cat tools/php-mcp/examples/call_fs_list_root.json | tools/php-mcp/bin/run.sh
+cat tools/php-mcp/examples/call_fs_list_sub.json  | tools/php-mcp/bin/run.sh
 
 # Traversal (errore):
-cat tools/php-mcp/examples/call_fs_list_escape.json | tools/php-mcp/bin/run
+cat tools/php-mcp/examples/call_fs_list_escape.json | tools/php-mcp/bin/run.sh
 
 ## Estensioni suggerite (Issue)
 - https://github.com/gcomneno/ML-Lab/issues
