@@ -3,7 +3,13 @@ name: PHP CI
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'tools/php-mcp/**'
+      - '.github/workflows/php-ci.yaml'
   pull_request:
+    paths:
+      - 'tools/php-mcp/**'
+      - '.github/workflows/php-ci.yaml'
 
 permissions:
   contents: read
@@ -13,16 +19,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
           ini-values: error_reporting=E_ALL,display_errors=On
+
       - name: Lint
         run: |
           set -euo pipefail
           find tools/php-mcp -type f -name "*.php" -print0 | xargs -0 -n1 -I{} php -l {}
-      - name: Smoke: ping
+
+      - name: "Smoke: initialize"
         run: |
           set -euo pipefail
-          echo '{"type":"initialize"}' | tools/php-mcp/bin/run.sh | grep -q '"initialize_result"'
-          echo '{"type":"call_tool","name":"ping","args":{}}' | tools/php-mcp/bin/run.sh | grep -q '"pong"'
+          echo '{"type":"initialize"}' | tools/php-mcp/bin/run | grep -q '"initialize_result"'
+
+      - name: "Smoke: ping"
+        run: |
+          set -euo pipefail
+          echo '{"type":"call_tool","name":"ping","args":{}}' | tools/php-mcp/bin/run | grep -q '"pong"'
