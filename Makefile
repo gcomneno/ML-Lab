@@ -4,7 +4,7 @@ PY   := $(VENV)/bin/python
 PIP  := $(VENV)/bin/pip
 TURBOK := tools/run_turbok_suite.sh
 
-.PHONY: setup run-iris run-imbalance run-forest run-importance run-grid docs-serve docs-build docs-deploy run-turbok run-turbok-oils
+.PHONY: setup run-iris run-imbalance run-forest run-importance run-grid docs-serve docs-build docs-deploy run-turbok run-turbok-oils verify
 
 setup:
 	python3 -m venv $(VENV)
@@ -54,3 +54,6 @@ docs-build:
 docs-deploy:
 	$(PIP) install mkdocs mkdocs-ivory
 	mkdocs gh-deploy --force
+
+verify:
+	@./tools/env_check.sh

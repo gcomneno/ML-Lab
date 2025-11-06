@@ -1,5 +1,4 @@
 name: docs
-
 on:
   push:
     branches: [ main ]
@@ -10,15 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - run: pip install mkdocs mkdocs-ivory
-      - run: mkdocs build --strict
+          cache: 'pip'
+      - run: |
+          set -euo pipefail
+          python -m pip install -U pip
+          pip install -r requirements.txt
+      - run: |
+          set -euo pipefail
+          mkdocs build --strict
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
