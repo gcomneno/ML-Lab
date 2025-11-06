@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/**'
+      - 'tools/**'
+      - 'requirements.txt'
+      - '.github/workflows/python-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tools/**'
+      - 'requirements.txt'
+      - '.github/workflows/python-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.8', '3.10' ]  # tieni 3.8 per compat, aggiungi 3.10
+    name: Python ${{ matrix.python-version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      - name: Install deps
+        run: |
+          set -euo pipefail
+          python -m pip install -U pip
+          pip install -r requirements.txt
+      - name: Syntax check (compileall)
+        run: |
+          set -euo pipefail
+          python -m compileall -q scripts || (echo "Syntax error in scripts" && exit 1)
+      - name: Smoke tests
+        run: |
+          set -euo pipefail
+          python scripts/iris.py --help
+          python scripts/imbalance.py --help
+          python scripts/forest_vs_logit.py --help
+          python scripts/importance_demo.py --help
+          python scripts/gridsearch_mixed.py --help

@@ -1,6 +1,6 @@
 numpy>=1.20,<2.0
 scikit-learn>=1.2,<1.4
-mkdocs>=1.5
-mkdocs-ivory>=0.4.6
 pyyaml
 toml
+mkdocs>=1.5,<2
+mkdocs-ivory==0.4.6
