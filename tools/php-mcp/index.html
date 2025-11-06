@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>PHP MCP Tool &mdash; ML-Lab</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> ML-Lab</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Home</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../lessons-learned/">Lessons Learned</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../script/">Script</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quiz/">Quiz</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tools</button>
+<ul class="subnav">
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">PHP MCP Tool</a><a class="nav-item current" href="./">PHP MCP Tool</a>
+<ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#requisiti">Requisiti</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#struttura">Struttura</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#uso-rapido-manuale">Uso rapido (manuale)</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#api-tipo">API “tipo”</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#fs_list-whitelist">fs_list (whitelist)</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#estensioni-suggerite-issue">Estensioni suggerite (Issue)</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#troubleshooting">Troubleshooting</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+    </div>
+    <div class="previous"><a href="../../quiz/">&laquo; Previous</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> ML-Lab</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tools</li>
+</ul>
+</nav>
+                <div id="content"><h1 id="php-mcp-tool-minimal">PHP MCP Tool (minimal)<a class="headerlink" href="#php-mcp-tool-minimal" title="Permanent link">&para;</a></h1>
+<p>Un micro–tool <strong>MCP</strong> scritto in <strong>PHP 7.4+</strong> per test e demo. Espone due comandi:
+- <code>ping()</code> → <code>{"message":"pong"}</code>
+- <code>sum({a,b})</code> → <code>{"result": a+b}</code></p>
+<blockquote>
+<p>MCP (<em>Model Context Protocol</em>) è il “contratto” che permette a un LLM di parlare con strumenti esterni tramite <strong>STDIN/STDOUT</strong> usando JSON. Qui lo implementiamo in forma essenziale.</p>
+</blockquote>
+<h2 id="requisiti">Requisiti<a class="headerlink" href="#requisiti" title="Permanent link">&para;</a></h2>
+<ul>
+<li>PHP <strong>7.4+</strong> (ok sulla tua VM Ubuntu)  </li>
+<li>Nessuna dipendenza esterna (niente Composer obbligatorio per la versione minimale)</li>
+</ul>
+<blockquote>
+<p>Nota: se in CI userai una versione più nuova (8.x) non ci sono problemi: il codice resta compatibile.</p>
+</blockquote>
+<h2 id="struttura">Struttura<a class="headerlink" href="#struttura" title="Permanent link">&para;</a></h2>
+<pre class="codehilite"><code>tools/php-mcp/
+├─ server.php
+├─ bin/
+│  └─ run
+└─ examples/
+├─ initialize.json
+└─ call_ping.json
+
+````
+
+- `server.php`: legge una richiesta JSON da **STDIN** e scrive una risposta JSON su **STDOUT**.
+- `bin/run.sh`: launcher comodo (ricorda `chmod +x tools/php-mcp/bin/run`).
+- `examples/`: richieste d’esempio.
+
+## Diagramma (ASCII)
+```md
+## Come fluisce tutto (schemino)
+
+LLM (client MCP)
+      │
+      │  JSON su STDIN
+      ▼
+┌─────────────────────┐
+│  server.php (PHP)   │
+│  - parse richiesta  │
+│  - valida schema    │
+│  - chiama tool      │
+└─────────┬───────────┘
+          │
+          │  es. ping() / sum(a,b)
+          ▼
+   Funzioni interne
+          │
+          │  JSON su STDOUT
+          ▼
+    Risposta al LLM
+</code></pre>
+
+<h2 id="uso-rapido-manuale">Uso rapido (manuale)<a class="headerlink" href="#uso-rapido-manuale" title="Permanent link">&para;</a></h2>
+<p>Handshake MCP:</p>
+<pre class="codehilite"><code class="language-bash">cat tools/php-mcp/examples/initialize.json | tools/php-mcp/bin/run
+````
+
+Chiamata `ping`:
+```bash
+cat tools/php-mcp/examples/call_ping.json | tools/php-mcp/bin/run
+</code></pre>
+
+<p>Somma:</p>
+<pre class="codehilite"><code class="language-bash">echo '{&quot;type&quot;:&quot;call_tool&quot;,&quot;name&quot;:&quot;sum&quot;,&quot;args&quot;:{&quot;a&quot;:10,&quot;b&quot;:32}}' | tools/php-mcp/bin/run
+</code></pre>
+
+<p>Output atteso (esempio):</p>
+<pre class="codehilite"><code class="language-json">{&quot;type&quot;:&quot;tool_result&quot;,&quot;name&quot;:&quot;sum&quot;,&quot;result&quot;:{&quot;result&quot;:42}}
+</code></pre>
+
+<h2 id="api-tipo">API “tipo”<a class="headerlink" href="#api-tipo" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Initialize</strong>
+  <code>json
+  { "type": "initialize" }</code></li>
+</ul>
+<p>Risposta:
+  <code>json
+  {
+    "type": "initialize_result",
+    "tools": [
+      { "name": "ping", "description": "Risponde \"pong\".", "input_schema": {...} },
+      { "name": "sum",  "description": "Somma due numeri.",  "input_schema": {...} }
+    ]
+  }</code></p>
+<ul>
+<li><strong>Call tool</strong>
+  <code>json
+  { "type": "call_tool", "name": "&lt;toolName&gt;", "args": { ... } }</code></li>
+</ul>
+<p>Risposta (OK):
+  <code>json
+  { "type": "tool_result", "name": "&lt;toolName&gt;", "result": { ... } }</code></p>
+<p>Risposta (errore):
+  <code>json
+  { "type": "error", "error": "Messaggio di errore" }</code></p>
+<h2 id="fs_list-whitelist">fs_list (whitelist)<a class="headerlink" href="#fs_list-whitelist" title="Permanent link">&para;</a></h2>
+<p>Elenca file/dir <strong>non ricorsivi</strong> sotto una root whitelisted.<br />
+Root predefinita: <code>tools/php-mcp/safe/</code> (configurabile con env <code>SAFE_ROOT</code>).</p>
+<p><strong>Input</strong>
+{ "type": "call_tool", "name": "fs_list", "args": { "path": "<relativo>" } }
+path: stringa relativa alla SAFE_ROOT (es. "", "subdir", "subdir/file.txt")
+Output (OK)</p>
+<p>{ "type": "tool_result", "name": "fs_list", "result": [ { "name":"...", "type":"file|dir", "size": 0 } ] }
+Output (errore)</p>
+<p>{ "type":"error", "code":"BAD_ARGS", "error":"..." }</p>
+<p><strong>Esempi</strong>
+cat tools/php-mcp/examples/call_fs_list_root.json | tools/php-mcp/bin/run
+cat tools/php-mcp/examples/call_fs_list_sub.json  | tools/php-mcp/bin/run</p>
+<h1 id="traversal-errore">Traversal (errore):<a class="headerlink" href="#traversal-errore" title="Permanent link">&para;</a></h1>
+<p>cat tools/php-mcp/examples/call_fs_list_escape.json | tools/php-mcp/bin/run</p>
+<h2 id="estensioni-suggerite-issue">Estensioni suggerite (Issue)<a class="headerlink" href="#estensioni-suggerite-issue" title="Permanent link">&para;</a></h2>
+<ul>
+<li>https://github.com/gcomneno/ML-Lab/issues</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Non stampa nulla?</strong> Verifica che stai inviando JSON valido su <code>run.sh</code> e che <code>server.php</code> sia eseguibile via PHP</li>
+<li><strong>JSON su più righe?</strong> Il server legge tutto lo STDIN; usa <code>echo '...' | run.sh</code> o <code>cat file.json | run.sh</code>.</li>
+<li><strong>CI fallisce?</strong> Se hai un workflow Python rinominato, nessun problema. Il tool PHP non richiede CI propria per funzionare.</li>
+</ul></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../../quiz/" title="Quiz"><span>Previous</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>
