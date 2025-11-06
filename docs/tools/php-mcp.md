@@ -107,10 +107,29 @@ Output atteso (esempio):
   { "type": "error", "error": "Messaggio di errore" }
   ```
 
+## fs_list (whitelist)
+Elenca file/dir **non ricorsivi** sotto una root whitelisted.  
+Root predefinita: `tools/php-mcp/safe/` (configurabile con env `SAFE_ROOT`).
+
+**Input**
+{ "type": "call_tool", "name": "fs_list", "args": { "path": "<relativo>" } }
+path: stringa relativa alla SAFE_ROOT (es. "", "subdir", "subdir/file.txt")
+Output (OK)
+
+{ "type": "tool_result", "name": "fs_list", "result": [ { "name":"...", "type":"file|dir", "size": 0 } ] }
+Output (errore)
+
+{ "type":"error", "code":"BAD_ARGS", "error":"..." }
+
+**Esempi**
+cat tools/php-mcp/examples/call_fs_list_root.json | tools/php-mcp/bin/run
+cat tools/php-mcp/examples/call_fs_list_sub.json  | tools/php-mcp/bin/run
+
+# Traversal (errore):
+cat tools/php-mcp/examples/call_fs_list_escape.json | tools/php-mcp/bin/run
+
 ## Estensioni suggerite (Issue)
-- `fs_list` con **whitelist** (solo directory sicure).
-- `mysql_query` **readonly** (DSN via `.env`, niente credenziali nel repo).
-- Logging su **STDERR** in NDJSON per non sporcare l’output del protocollo.
+- https://github.com/gcomneno/ML-Lab/issues
 
 ## Troubleshooting
 - **Non stampa nulla?** Verifica che stai inviando JSON valido su `run.sh` e che `server.php` sia eseguibile via PHP

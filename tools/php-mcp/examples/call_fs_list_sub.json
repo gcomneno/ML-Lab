@@ -1,0 +1,1 @@
+{ "type": "call_tool", "name": "fs_list", "args": { "path": "subdir" } }
