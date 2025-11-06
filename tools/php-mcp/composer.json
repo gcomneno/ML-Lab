@@ -1,0 +1,7 @@
+{
+    "name": "giadaware/php-mcp-tool",
+    "description": "Minimal MCP tool in PHP (ping + sum).",
+    "type": "project",
+    "require": { "php": ">=7.4" }
+  }
+  

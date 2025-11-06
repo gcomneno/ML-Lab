@@ -26,3 +26,5 @@ nav:
   - Lessons Learned: lessons-learned.md
   - Script: script.md
   - Quiz: quiz.md
+  - Tools:
+      - PHP MCP Tool: tools/php-mcp.md
